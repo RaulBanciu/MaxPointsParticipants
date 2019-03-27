@@ -1,9 +1,12 @@
 package MaxPointsParticipantsMV;
 
 import domain.Student;
+import domain.Tema;
 import org.junit.Test;
 import repository.StudentFileRepository;
+import repository.TemaFileRepository;
 import validation.StudentValidator;
+import validation.TemaValidator;
 
 import static org.junit.Assert.*;
 
@@ -68,5 +71,25 @@ public class AppTest
         repo.save(s2);
         assertEquals(repo.findOne("6").getNume(),"Bizonul");
         assertEquals(repo.findOne("8"),null);
+    }
+
+    @Test
+    public void addTheme1(){
+        TemaValidator validator = new TemaValidator();
+        TemaFileRepository repo = new TemaFileRepository(validator,"E:\\Lecture02\\MaxPointsParticipants\\files\\tema.txt");
+        Tema t1 = new Tema("1","ceva",2,1);
+        repo.save(t1);
+        assertEquals(repo.findOne("1").getDescriere(),"ceva");
+    }
+
+    @Test
+    public void addTheme2(){
+        TemaValidator validator = new TemaValidator();
+        TemaFileRepository repo = new TemaFileRepository(validator,"E:\\Lecture02\\MaxPointsParticipants\\files\\tema.txt");
+        Tema t1 = new Tema("1","ceva",2,1);
+        Tema t2 = new Tema("2","",3,1);
+        repo.save(t1);
+        repo.save(t2);
+        assertEquals(repo.findOne("2"),null);
     }
 }
