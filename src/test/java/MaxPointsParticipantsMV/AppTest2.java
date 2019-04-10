@@ -39,7 +39,7 @@ public class AppTest2
     }
 
     @Test
-    public void addTheme(){
+    public void addThemeTest(){
         TemaValidator validator = new TemaValidator();
         TemaFileRepository repo = new TemaFileRepository(validator,"E:\\Lecture02\\MaxPointsParticipants\\files\\tema.txt");
         Tema t1 = new Tema("1","ceva",2,1);
@@ -48,7 +48,7 @@ public class AppTest2
     }
 
     @Test
-    public void addNota(){
+    public void addNotaTest(){
         NotaValidator validator = new NotaValidator();
         NotaFileRepository repo = new NotaFileRepository(validator,"E:\\Lecture02\\MaxPointsParticipants\\files\\nota.txt");
         Nota s4 = new Nota(new Pair<>("Test","1"),5.5,3,"good");
@@ -57,7 +57,7 @@ public class AppTest2
     }
 
     @Test
-    public void addAll(){
+    public void addAllTest(){
 	StudentValidator validator = new StudentValidator();
         StudentFileRepository repo = new StudentFileRepository(validator,"E:\\Lecture02\\MaxPointsParticipants\\files\\studenti.txt");
         Student s1 = new Student("Test1","Mircea Ioan",932);
