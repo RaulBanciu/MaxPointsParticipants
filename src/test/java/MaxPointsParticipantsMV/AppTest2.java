@@ -53,7 +53,7 @@ public class AppTest2
         NotaFileRepository repo = new NotaFileRepository(validator,"E:\\Lecture02\\MaxPointsParticipants\\files\\nota.txt");
         Nota s4 = new Nota(new Pair<>("Test","1"),5.5,3,"good");
         repo.save(s4);
-        assertEquals(repo.findOne(new Pair<>("Test","1")).getNota(),5.5);
+        assertTrue(repo.findOne(new Pair<>("Test","1")).getNota()==5.5);
     }
 
     @Test
