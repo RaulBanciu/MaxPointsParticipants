@@ -9,7 +9,7 @@ public class NotaFileRepository extends AbstractFileRepository<Pair<String, Stri
 
     public NotaFileRepository(Validator<Nota> validator, String filename) {
         super(validator, filename);
-        loadFromFile();
+        //loadFromFile();
     }
 
     protected void loadFromFile() {
@@ -30,12 +30,12 @@ public class NotaFileRepository extends AbstractFileRepository<Pair<String, Stri
     }
 
     protected void writeToFile(Nota nota) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename, true))) {
-            bw.write(nota.getID().getObject1() + "#" + nota.getID().getObject2() + "#" + nota.getNota() + "#"
-                    + nota.getSaptamanaPredare() + "#" + nota.getFeedback() + "\n");
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+//        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename, true))) {
+//            bw.write(nota.getID().getObject1() + "#" + nota.getID().getObject2() + "#" + nota.getNota() + "#"
+//                    + nota.getSaptamanaPredare() + "#" + nota.getFeedback() + "\n");
+//        } catch (IOException ioe) {
+//            ioe.printStackTrace();
+//        }
     }
 
     protected void writeToFileAll() {
