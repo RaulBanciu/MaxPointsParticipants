@@ -72,6 +72,6 @@ public class AppTest2
         repon.save(n1);
 	assertEquals(repo.findOne("Test1").getGrupa(),932);
 	assertEquals(repot.findOne("1").getDescriere(),"ceva");
-        assertEquals(repon.findOne(new Pair<>("Test1","2")).getNota(),5.5);
+        assertTrue(repon.findOne(new Pair<>("Test1","2")).getNota()==5.5);
     }	
 }
