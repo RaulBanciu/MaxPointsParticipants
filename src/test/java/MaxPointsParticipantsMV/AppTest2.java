@@ -64,7 +64,7 @@ public class AppTest2
 	repo.save(s1);
 	TemaValidator validatort = new TemaValidator();
         TemaFileRepository repot = new TemaFileRepository(validatort,"E:\\Lecture02\\MaxPointsParticipants\\files\\tema.txt");
-        Tema t1 = new Tema("12","ceva",2,1);
+        Tema t1 = new Tema("2","ceva",2,1);
 	repot.save(t1);
         NotaValidator validatorn= new NotaValidator();
         NotaFileRepository repon = new NotaFileRepository(validatorn,"E:\\Lecture02\\MaxPointsParticipants\\files\\nota.txt");
