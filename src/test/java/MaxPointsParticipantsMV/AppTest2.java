@@ -64,14 +64,14 @@ public class AppTest2
 	repo.save(s1);
 	TemaValidator validatort = new TemaValidator();
         TemaFileRepository repot = new TemaFileRepository(validatort,"E:\\Lecture02\\MaxPointsParticipants\\files\\tema.txt");
-        Tema t1 = new Tema("2","ceva",2,1);
+        Tema t1 = new Tema("1","ceva",2,1);
 	repot.save(t1);
         NotaValidator validatorn= new NotaValidator();
         NotaFileRepository repon = new NotaFileRepository(validatorn,"E:\\Lecture02\\MaxPointsParticipants\\files\\nota.txt");
         Nota n1 = new Nota(new Pair<>("Test1","2"),5.5,3,"good");
         repon.save(n1);
 	assertEquals(repo.findOne("Test1").getGrupa(),932);
-	assertEquals(repot.findOne("2").getDescriere(),"ceva");
+	assertEquals(repot.findOne("1").getDescriere(),"ceva");
         assertEquals(repon.findOne(new Pair<>("Test1","2")).getNota(),5.5);
     }	
 }
