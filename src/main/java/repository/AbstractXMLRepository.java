@@ -28,54 +28,54 @@ public abstract class AbstractXMLRepository<ID, E extends HasID<ID>> extends Abs
     protected abstract Element getElementFromEntity(E entity, Document XMLdocument);
 
     protected void loadFromXmlFile() {
-        try {
-            Document XMLdocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(XMLfilename);
-            Element root = XMLdocument.getDocumentElement();
-            NodeList list = root.getChildNodes();
-
-            for(int i = 0; i < list.getLength(); i++) {
-                Node node = list.item(i);
-                if (node.getNodeType() == Element.ELEMENT_NODE) {
-                    try {
-                        super.save(getEntityFromNode((Element)node));
-                    }
-                    catch(ValidationException ve) {
-                        ve.printStackTrace();
-                    }
-                }
-            }
-        }
-        catch(ParserConfigurationException pce) {
-            pce.printStackTrace();
-        }
-        catch(SAXException s) {
-            s.printStackTrace();
-        }
-        catch(IOException i) {
-            i.printStackTrace();
-        }
+//        try {
+//            Document XMLdocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(XMLfilename);
+//            Element root = XMLdocument.getDocumentElement();
+//            NodeList list = root.getChildNodes();
+//
+//            for(int i = 0; i < list.getLength(); i++) {
+//                Node node = list.item(i);
+//                if (node.getNodeType() == Element.ELEMENT_NODE) {
+//                    try {
+//                        super.save(getEntityFromNode((Element)node));
+//                    }
+//                    catch(ValidationException ve) {
+//                        ve.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//        catch(ParserConfigurationException pce) {
+//            pce.printStackTrace();
+//        }
+//        catch(SAXException s) {
+//            s.printStackTrace();
+//        }
+//        catch(IOException i) {
+//            i.printStackTrace();
+//        }
     }
 
     protected void writeToXmlFile() {
-        try {
-            Document XMLdocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-            Element root = XMLdocument.createElement("Entitati");
-            XMLdocument.appendChild(root);
-
-            entities.values().forEach(entity -> root.appendChild(getElementFromEntity(entity, XMLdocument)));
-            Transformer XMLtransformer = TransformerFactory.newInstance().newTransformer();
-            XMLtransformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            XMLtransformer.transform(new DOMSource(XMLdocument), new StreamResult(XMLfilename));
-        }
-        catch(ParserConfigurationException pce) {
-            pce.printStackTrace();
-        }
-        catch(TransformerConfigurationException tce) {
-            tce.printStackTrace();
-        }
-        catch(TransformerException te) {
-            te.printStackTrace();
-        }
+//        try {
+//            Document XMLdocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+//            Element root = XMLdocument.createElement("Entitati");
+//            XMLdocument.appendChild(root);
+//
+//            entities.values().forEach(entity -> root.appendChild(getElementFromEntity(entity, XMLdocument)));
+//            Transformer XMLtransformer = TransformerFactory.newInstance().newTransformer();
+//            XMLtransformer.setOutputProperty(OutputKeys.INDENT, "yes");
+//            XMLtransformer.transform(new DOMSource(XMLdocument), new StreamResult(XMLfilename));
+//        }
+//        catch(ParserConfigurationException pce) {
+//            pce.printStackTrace();
+//        }
+//        catch(TransformerConfigurationException tce) {
+//            tce.printStackTrace();
+//        }
+//        catch(TransformerException te) {
+//            te.printStackTrace();
+//        }
     }
 
     protected Element createElement(Document XMLdocument, String tag, String value) {
