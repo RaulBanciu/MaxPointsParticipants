@@ -138,8 +138,9 @@ public class AppTest
         thrown.expect(ValidationException.class);
 
         thrown.expectMessage("Numar tema invalid!\n");
+        int a=service.saveTema("","descriere",3,4);
 
-        assertEquals(0, service.saveTema("","descriere",3,4));
+        assertEquals(0,a );
 
 
     }
@@ -161,7 +162,8 @@ public class AppTest
 
         thrown.expectMessage("Numar tema invalid!\n");
 
-        assertEquals(0, service.saveTema(null,"descriere",3,4));
+        int a=service.saveTema(null,"descriere",3,4);
+        assertEquals(0, a);
 
 
     }
@@ -218,8 +220,9 @@ public class AppTest
 
         thrown.expect(ValidationException.class);
         thrown.expectMessage("Descriere invalida!\n");
+        int a=service.saveTema("123",null,3,2);
 
-        assertEquals(0, service.saveTema("123",null,3,2));
+        assertEquals(0, a);
 
 
     }
@@ -304,8 +307,9 @@ public class AppTest
 
         thrown.expect(ValidationException.class);
         thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
+        int a=service.saveTema("1234", "descriere",0,1);
 
-        assertEquals(0,service.saveTema("1234", "descriere",0,1));
+        assertEquals(0,a);
     }
 
     @Test
@@ -343,8 +347,9 @@ public class AppTest
 
         thrown.expect(ValidationException.class);
         thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
+        int a=service.saveTema("1234", "descriere",15,2);
 
-        assertEquals(0,service.saveTema("1234", "descriere",15,2));
+        assertEquals(0,a);
     }
 
     @Test
@@ -362,8 +367,9 @@ public class AppTest
 
         thrown.expect(ValidationException.class);
         thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
+        int a=service.saveTema("1234", "descriere",2,2);
 
-        assertEquals(1,service.saveTema("1234", "descriere",2,2));
+        assertEquals(1,a);
     }
 
     @Test
@@ -446,8 +452,9 @@ public class AppTest
 
         thrown.expect(ValidationException.class);
         thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
+        int a =service.saveTema("1234", "descriere",1,0);
 
-        assertEquals(0,service.saveTema("1234", "descriere",1,0));
+        assertEquals(0,a);
     }
 
     @Test
@@ -465,8 +472,9 @@ public class AppTest
 
         thrown.expect(ValidationException.class);
         thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
+        int a=service.saveTema("1234", "descriere",1,2);
 
-        assertEquals(0,service.saveTema("1234", "descriere",1,2));
+        assertEquals(0,a);
     }
 
 
@@ -485,8 +493,9 @@ public class AppTest
 
         thrown.expect(ValidationException.class);
         thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
+        int a=service.saveTema("1234", "descriere",10,15);
 
-        assertEquals(0,service.saveTema("1234", "descriere",10,15));
+        assertEquals(0,a);
     }
 
     @Test
