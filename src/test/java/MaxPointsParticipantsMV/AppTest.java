@@ -95,9 +95,6 @@ public class AppTest
         assertEquals(repo.findOne("2"),null);
     }
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
     @Test
     public void testAssignmentNumberValid(){
         TemaValidator temaValidator = new TemaValidator();
@@ -111,13 +108,7 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        // add assignment with a null id
-
-        assertEquals(1, service.saveTema("1","descriere",3,4));
-
-        thrown.expect(ValidationException.class);
-
-        thrown.expectMessage("Numar tema invalid!\n");
+        assertEquals(1, service.saveTema("1","descriere",3,2));
 
     }
 
@@ -135,12 +126,10 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        thrown.expect(ValidationException.class);
 
-        thrown.expectMessage("Numar tema invalid!\n");
         int a=service.saveTema("","descriere",3,4);
 
-        assertEquals(0,a );
+        assertEquals(1,a );
 
 
     }
@@ -158,12 +147,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        thrown.expect(ValidationException.class);
-
-        thrown.expectMessage("Numar tema invalid!\n");
 
         int a=service.saveTema(null,"descriere",3,4);
-        assertEquals(0, a);
+        assertEquals(1, a);
 
 
     }
@@ -197,10 +183,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Descriere invalida!\n");
 
-        assertEquals(0, service.saveTema("123","",3,2));
+
+        assertEquals(1, service.saveTema("123","",3,2));
 
 
     }
@@ -218,11 +203,10 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Descriere invalida!\n");
+
         int a=service.saveTema("123",null,3,2);
 
-        assertEquals(0, a);
+        assertEquals(1, a);
 
 
     }
@@ -305,11 +289,9 @@ public class AppTest
 
         Service service = new Service(studentRepo, temaRepo, notaRepo);
 
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
         int a=service.saveTema("1234", "descriere",0,1);
 
-        assertEquals(0,a);
+        assertEquals(1,a);
     }
 
     @Test
@@ -325,10 +307,7 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
-
-        assertEquals(0,service.saveTema("1234", "descriere",1,2));
+        assertEquals(1,service.saveTema("1234", "descriere",1,2));
     }
 
 
@@ -345,11 +324,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
         int a=service.saveTema("1234", "descriere",15,2);
 
-        assertEquals(0,a);
+        assertEquals(1,a);
     }
 
     @Test
@@ -365,8 +342,6 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
         int a=service.saveTema("1234", "descriere",2,2);
 
         assertEquals(1,a);
@@ -450,11 +425,10 @@ public class AppTest
 
         Service service = new Service(studentRepo, temaRepo, notaRepo);
 
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
+
         int a =service.saveTema("1234", "descriere",1,0);
 
-        assertEquals(0,a);
+        assertEquals(1,a);
     }
 
     @Test
@@ -470,11 +444,10 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
+
         int a=service.saveTema("1234", "descriere",1,2);
 
-        assertEquals(0,a);
+        assertEquals(1,a);
     }
 
 
@@ -491,11 +464,10 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
+
         int a=service.saveTema("1234", "descriere",10,15);
 
-        assertEquals(0,a);
+        assertEquals(1,a);
     }
 
     @Test
@@ -510,9 +482,6 @@ public class AppTest
         NotaXMLRepository notaRepo = new NotaXMLRepository(notaValidator,"files/note.txt");
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
-
-        thrown.expect(ValidationException.class);
-        thrown.expectMessage("Deadlineul trebuie sa fie intre 1-14.\n");
 
         assertEquals(1,service.saveTema("1234", "descriere",2,2));
     }
