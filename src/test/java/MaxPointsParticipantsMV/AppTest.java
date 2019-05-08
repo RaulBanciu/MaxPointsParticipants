@@ -12,6 +12,9 @@ import validation.StudentValidator;
 import validation.TemaValidator;
 import validation.ValidationException;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 /**
@@ -108,7 +111,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1, service.saveTema("1","descriere",3,2));
+        Tema t1= new Tema("1","descriere",3,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1").getDescriere(),"descriere");
 
     }
 
@@ -126,12 +131,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-
-        int a=service.saveTema("","descriere",3,4);
-
-        assertEquals(1,a );
-
-
+        Tema t1= new Tema("","descriere",3,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne(""),null);
     }
 
     @Test
@@ -147,11 +149,10 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
+        Tema t1= new Tema(null,"descriere",3,2);
+        temaRepo.save(t1);
 
-        int a=service.saveTema(null,"descriere",3,4);
-        assertEquals(1, a);
-
-
+        assertEquals(temaRepo.findAll().iterator().hasNext(),false);
     }
 
     @Test
@@ -167,7 +168,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1, service.saveTema("123","descriere",3,2));
+        Tema t1= new Tema("123","descriere",3,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("123").getDescriere(),"descriere");
     }
 
     @Test
@@ -183,10 +186,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-
-
-        assertEquals(1, service.saveTema("123","",3,2));
-
+        Tema t1= new Tema("123","",3,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("123"),null);
 
     }
 
@@ -203,12 +205,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-
-        int a=service.saveTema("123",null,3,2);
-
-        assertEquals(1, a);
-
-
+        Tema t1= new Tema("123",null,3,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("123"),null);
     }
 
     @Test
@@ -224,7 +223,11 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1,service.saveTema("1234","descriere",1,1));
+        Tema t1= new Tema("1234","descriere",1,1);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getDeadline(),1);
+
+
     }
 
     @Test
@@ -240,7 +243,10 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1,service.saveTema("1234","descriere",3,2));
+        Tema t1= new Tema("1234","descriere",3,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getDeadline(),3);
+
     }
 
     @Test
@@ -257,6 +263,11 @@ public class AppTest
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
         assertEquals(1,service.saveTema("1234","descriere",14,1));
+
+        Tema t1= new Tema("1234","descriere",14,1);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getDeadline(),14);
+
     }
 
     @Test
@@ -272,7 +283,10 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1,service.saveTema("1234","descriere",13,1));
+        Tema t1= new Tema("1234","descriere",13,1);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getDeadline(),13);
+
     }
 
 
@@ -289,9 +303,10 @@ public class AppTest
 
         Service service = new Service(studentRepo, temaRepo, notaRepo);
 
-        int a=service.saveTema("1234", "descriere",0,1);
+        Tema t1= new Tema("1234", "descriere",0,1);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234"),null);
 
-        assertEquals(1,a);
     }
 
     @Test
@@ -308,6 +323,11 @@ public class AppTest
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
         assertEquals(1,service.saveTema("1234", "descriere",1,2));
+
+        Tema t1= new Tema("1234", "descriere",1,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234"),null);
+
     }
 
 
@@ -324,9 +344,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        int a=service.saveTema("1234", "descriere",15,2);
-
-        assertEquals(1,a);
+        Tema t1= new Tema("1234", "descriere",15,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234"),null);
     }
 
     @Test
@@ -342,9 +362,10 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        int a=service.saveTema("1234", "descriere",2,2);
+        Tema t1= new Tema("1234", "descriere",2,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getDeadline(),2);
 
-        assertEquals(1,a);
     }
 
     @Test
@@ -360,7 +381,10 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1,service.saveTema("1234","descriere",1,1));
+        Tema t1= new Tema("1234", "descriere",1,1);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getStartline(),1);
+
     }
 
     @Test
@@ -376,7 +400,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1,service.saveTema("1234","descriere",3,2));
+        Tema t1= new Tema("1234", "descriere",3,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getStartline(),2);
     }
 
     @Test
@@ -392,7 +418,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1,service.saveTema("1234","descriere",14,14));
+        Tema t1= new Tema("1234", "descriere",14,14);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getStartline(),14);
     }
 
     @Test
@@ -408,7 +436,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1,service.saveTema("1234","descriere",14,13));
+        Tema t1= new Tema("1234", "descriere",14,13);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getStartline(),13);
     }
 
 
@@ -425,10 +455,9 @@ public class AppTest
 
         Service service = new Service(studentRepo, temaRepo, notaRepo);
 
-
-        int a =service.saveTema("1234", "descriere",1,0);
-
-        assertEquals(1,a);
+        Tema t1= new Tema("1234", "descriere",1,0);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234"),null);
     }
 
     @Test
@@ -444,10 +473,9 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-
-        int a=service.saveTema("1234", "descriere",1,2);
-
-        assertEquals(1,a);
+        Tema t1= new Tema("1234", "descriere",1,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234"),null);
     }
 
 
@@ -465,9 +493,9 @@ public class AppTest
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
 
-        int a=service.saveTema("1234", "descriere",10,15);
-
-        assertEquals(1,a);
+        Tema t1= new Tema("1234", "descriere",10,15);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234"),null);
     }
 
     @Test
@@ -483,6 +511,8 @@ public class AppTest
 
         Service service = new Service(studentRepo,temaRepo,notaRepo);
 
-        assertEquals(1,service.saveTema("1234", "descriere",2,2));
+        Tema t1= new Tema("1234", "descriere",2,2);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1234").getStartline(),2);
     }
 }
