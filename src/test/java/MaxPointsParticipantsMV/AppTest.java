@@ -515,4 +515,24 @@ public class AppTest
         temaRepo.save(t1);
         assertEquals(temaRepo.findOne("1234").getStartline(),2);
     }
+
+    @Test
+    public void testAddTema1Coverage(){
+        TemaValidator temaValidator = new TemaValidator();
+        TemaXMLRepository temaRepo = new TemaXMLRepository(temaValidator,"files/tema.txt");
+
+        Tema t1= new Tema("1", "ceva",11,10);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("1"),t1);
+    }
+
+    @Test
+    public void testAddTema2Coverage(){
+        TemaValidator temaValidator = new TemaValidator();
+        TemaXMLRepository temaRepo = new TemaXMLRepository(temaValidator,"files/tema.txt");
+
+        Tema t1= new Tema("0", "",15,0);
+        temaRepo.save(t1);
+        assertEquals(temaRepo.findOne("0"),null);
+    }
 }
